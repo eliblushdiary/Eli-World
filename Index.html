@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8dbe5">
+<title>Eli Blush Diary ♡</title>
+<style>
+:root{--pink:#f4c7d7;--pink2:#ffeaf1;--cream:#fffaf5;--silver:#c9c7ce;--mauve:#9d6279;--ink:#654b58;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif}
+a{color:inherit}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:10;background:#fffaf5eF;backdrop-filter:blur(12px);border-bottom:1px solid #f1dce4}
+.nav{max-width:1120px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-family:Georgia,serif;font-style:italic;font-size:1.45rem;color:#b45f82;text-decoration:none;white-space:nowrap}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.navlinks a{text-decoration:none;font-size:.9rem;padding:7px 9px;border-radius:20px}
+.navlinks a:hover{background:var(--pink2)}
+.hero{max-width:1120px;margin:26px auto 0;padding:26px 20px 10px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:26px}
+.eyebrow{display:inline-block;background:#fff;border:1px solid #efd4df;padding:7px 12px;border-radius:99px;font-size:.78rem;letter-spacing:.05em}
+h1{font:italic clamp(2.6rem,7vw,5rem)/.98 Georgia,serif;color:#b45f82;margin:18px 0}
+h1 span{color:#d68ca8}
+.lead{font-size:1.08rem;line-height:1.7;max-width:600px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+.btn{border:0;border-radius:999px;padding:12px 17px;background:#c96f91;color:white;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 5px 0 #e7c2d0}
+.btn.secondary{background:white;color:#a65f7b;border:1px solid #efcfdb;box-shadow:none}
+.hero-art{min-height:330px;border-radius:34px;background:radial-gradient(circle at 50% 38%,#fff 0 16%,transparent 17%),linear-gradient(140deg,#f7d7e2,#fff8f4 55%,#e8e3e9);position:relative;overflow:hidden;border:1px solid #f0d4df;display:grid;place-items:center}
+.hero-art:before,.hero-art:after{content:"";position:absolute;width:160px;height:160px;border:2px solid #fff9;border-radius:50%;top:15px;left:-45px}
+.hero-art:after{width:220px;height:220px;left:auto;top:auto;right:-80px;bottom:-85px}
+.big-bow{font-size:5rem;filter:drop-shadow(0 8px 8px #b56a8730);position:absolute;top:18px;right:26px;transform:rotate(12deg)}
+.kitty{font-size:8rem;filter:drop-shadow(0 8px 0 #eac3d2);z-index:1}
+.art-note{position:absolute;bottom:22px;left:20px;background:#fffaf0d9;border:1px solid #fff;padding:10px 14px;border-radius:14px;font-family:Georgia,serif;font-style:italic;transform:rotate(-4deg)}
+.sparkle{position:absolute;color:#fff;font-size:2rem;text-shadow:0 1px 8px #b66b8b;animation:twinkle 3s infinite ease-in-out}
+.s1{top:26%;left:15%}.s2{top:49%;right:14%;animation-delay:1s}.s3{bottom:24%;right:24%;animation-delay:2s}
+@keyframes twinkle{50%{transform:scale(1.3) rotate(20deg);opacity:.65}}
+.wrap{max-width:1120px;margin:auto;padding:26px 20px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:18px}
+h2{font:italic 2rem Georgia,serif;color:#a75f7a;margin:0}
+.sub{color:#997c88;margin:6px 0 0;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:white;border:1px solid #f0dce4;border-radius:22px;padding:20px;box-shadow:0 8px 24px #a25e7a0b}
+.card h3{margin:9px 0 7px;font-size:1.05rem}
+.card p{line-height:1.55;margin:0;color:#8a6e7b}
+.emoji{font-size:2rem}
+.card .smallbtn{margin-top:14px;background:#fff0f5;border:1px solid #f0d0dc;color:#9e5e78;padding:9px 12px;border-radius:999px}
+.palette{display:flex;gap:8px;margin-top:14px}
+.swatch{height:38px;flex:1;border-radius:12px;border:1px solid #ead8df;position:relative}
+.swatch span{position:absolute;bottom:-21px;left:0;font-size:.62rem;color:#987b88}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.todo-list{display:grid;gap:9px;margin-top:14px}
+.todo-item{display:flex;gap:10px;align-items:center;background:#fff8fb;padding:10px 12px;border-radius:12px}
+.todo-item input{accent-color:#c96f91;width:17px;height:17px}
+.progress{height:8px;background:#f6e6ec;border-radius:99px;overflow:hidden;margin-top:12px}
+.progress div{height:100%;width:0;background:#cb7998;transition:width .2s}
+.quote{font:italic 1.5rem/1.5 Georgia,serif;color:#a65f7b}
+.quote-by{font-size:.8rem;color:#9e8590}
+.quote-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+input[type=text],textarea,select{width:100%;padding:11px 12px;border-radius:12px;border:1px solid #ead4de;background:#fffdfd;color:var(--ink);outline-color:#d48ba8}
+textarea{resize:vertical;min-height:100px}
+label{font-size:.86rem;display:block;margin:10px 0 6px}
+.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pin{min-height:170px;border-radius:20px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:1px solid #eed5df}
+.pin:nth-child(1){background:linear-gradient(145deg,#f7d4e0,#fff7f1)}
+.pin:nth-child(2){background:linear-gradient(145deg,#fff9f2,#e8e2eb)}
+.pin:nth-child(3){background:linear-gradient(145deg,#f1dce5,#fff)}
+.pin strong{font:italic 1.3rem Georgia,serif}
+.pin span{font-size:2rem;align-self:flex-end}
+.pin small{letter-spacing:.08em;text-transform:uppercase;font-size:.65rem}
+.footer{background:#f9e4eb;border-top:1px solid #efd2de;margin-top:25px}
+.footer-inner{max-width:1120px;margin:auto;padding:24px 20px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.pill{display:inline-block;padding:6px 10px;background:#fff;border-radius:99px;font-size:.76rem;margin:3px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#654b58;color:white;padding:12px 17px;border-radius:99px;box-shadow:0 8px 25px #0002;opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
+.toast.show{opacity:1}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:18px}.hero-art{min-height:270px}.grid{grid-template-columns:1fr 1fr}.tools{grid-template-columns:1fr}.pin-grid{grid-template-columns:1fr 1fr}.nav{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}.section-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:480px){.grid,.pin-grid{grid-template-columns:1fr}.kitty{font-size:6rem}.hero-art{min-height:245px}.wrap{padding:23px 15px}.hero{padding-left:15px;padding-right:15px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav">
+    <a class="brand" href="#inicio">Eli Blush Diary ♡</a>
+    <div class="navlinks">
+      <a href="#rinconcitos">Rinconcitos</a><a href="#utilidades">Herramientas</a><a href="#inspiracion">Inspiración</a><a href="#pinterest">Pinterest</a>
+    </div>
+  </nav>
+</header>
+<main id="inicio">
+<section class="hero">
+  <div>
+    <span class="eyebrow">♡ TU PEQUEÑO RINCÓN ROSA ♡</span>
+    <h1>Hola, soy <span>Eli Blush</span> 🎀</h1>
+    <p class="lead">Un rinconcito digital para soñar, crear, organizar ideas y encontrar inspiración bonita. Aquí hay listas útiles, pequeñas herramientas, frases para guardar y un poquito de caos adorable.</p>
+    <div class="actions">
+      <a class="btn" href="#utilidades">Explorar herramientas ✨</a>
+      <a class="btn secondary" href="#pinterest">Visitar mi Pinterest ↗</a>
+    </div>
+    <div><span class="pill">🎀 Coquette</span><span class="pill">🩰 Creatividad</span><span class="pill">💌 Ideas bonitas</span><span class="pill">✨ Vida organizada</span></div>
+  </div>
+  <div class="hero-art" aria-label="Ilustración decorativa de una gatita con moño">
+    <div class="big-bow">🎀</div><div class="sparkle s1">✧</div><div class="sparkle s2">♡</div><div class="sparkle s3">✦</div>
+    <div class="kitty" role="img" aria-label="gatita kawaii">🐱</div>
+    <div class="art-note">dream a little, create a lot ♡</div>
+  </div>
+</section>
+
+<section class="wrap" id="rinconcitos">
+  <div class="section-head"><div><h2>Mis rinconcitos</h2><p class="sub">Elige qué necesitas hoy, linda.</p></div></div>
+  <div class="grid">
+    <article class="card"><div class="emoji">📌</div><h3>Ideas para guardar</h3><p>Ideas visuales, tableros y pequeños hallazgos para volver a ellos cuando quieras.</p><a href="#pinterest"><button class="smallbtn">Ir a Pinterest ↗</button></a></article>
+    <article class="card"><div class="emoji">📝</div><h3>Organiza tu día</h3><p>Una lista sencilla para dividir tus tareas y marcar lo que ya terminaste.</p><a href="#utilidades"><button class="smallbtn">Abrir mi lista</button></a></article>
+    <article class="card"><div class="emoji">💗</div><h3>Un recordatorio amable</h3><p>No tienes que hacerlo todo de una vez. Un pasito pequeño también cuenta.</p><button class="smallbtn" onclick="newQuote()">Dame otro recordatorio</button></article>
+    <article class="card"><div class="emoji">🎨</div><h3>Paleta de Eli</h3><p>Rosa bebé, crema, rosa perla, plata suave y malva para mantener una identidad delicada.</p><div class="palette"><div class="swatch" style="background:#f4c7d7"><span>Rosa</span></div><div class="swatch" style="background:#fffaf5"><span>Crema</span></div><div class="swatch" style="background:#e8d7e1"><span>Perla</span></div><div class="swatch" style="background:#c9c7ce"><span>Plata</span></div><div class="swatch" style="background:#9d6279"><span>Malva</span></div></div></article>
+    <article class="card"><div class="emoji">💄</div><h3>Beauty corner</h3><p>Un espacio para listas de deseos, productos favoritos y looks que te gustaría probar.</p><button class="smallbtn" onclick="document.getElementById('nota').focus()">Anotar una idea</button></article>
+    <article class="card"><div class="emoji">🌷</div><h3>Pequeñas cosas bonitas</h3><p>Una taza rica, una canción, una conversación o un rato de descanso también cuentan.</p><button class="smallbtn" onclick="showToast('Recordatorio guardado en tu corazón ♡')">Guardar recordatorio ♡</button></article>
+  </div>
+</section>
+
+<section class="wrap" id="utilidades">
+  <div class="section-head"><div><h2>Herramientas útiles</h2><p class="sub">Pequeñas funciones para ayudarte en el día a día.</p></div></div>
+  <div class="tools">
+    <article class="card">
+      <div class="emoji">☑️</div><h3>Mi lista de tareas</h3><p>Escribe algo que quieras hacer y marca cada tarea al terminar.</p>
+      <form id="todoForm"><label for="todoInput">Nueva tarea</label><input id="todoInput" type="text" placeholder="Ej. preparar ideas para un pin" maxlength="120"><button class="btn" style="margin-top:10px" type="submit">Añadir tarea +</button></form>
+      <div class="todo-list" id="todoList"></div><div class="progress"><div id="progressBar"></div></div><p id="progressText" style="margin-top:7px;font-size:.82rem">0 tareas completadas</p>
+      <button class="smallbtn" onclick="clearDone()">Borrar tareas terminadas</button>
+    </article>
+    <article class="card">
+      <div class="emoji">💌</div><h3>Generador de recordatorios</h3>
+      <div class="quote" id="quote">“No necesitas tenerlo todo resuelto para empezar.”</div><div class="quote-by">— Una nota de Eli para ti ♡</div>
+      <div class="quote-actions"><button class="btn" onclick="newQuote()">Otra frase ✨</button><button class="btn secondary" onclick="copyQuote()">Copiar frase</button></div>
+    </article>
+    <article class="card">
+      <div class="emoji">✍️</div><h3>Bloc de ideas</h3><p>Escribe una idea para un pin, un proyecto, un dibujo o cualquier cosa que se te ocurra.</p>
+      <label for="nota">Tu nota</label><textarea id="nota" placeholder="Hoy se me ocurrió..."></textarea>
+      <div class="quote-actions"><button class="btn" onclick="saveNote()">Guardar en esta página</button><button class="btn secondary" onclick="copyNote()">Copiar nota</button></div>
+      <p style="font-size:.78rem;margin-top:10px">Nota: se guarda en este navegador si permite almacenamiento local. Evita escribir datos privados.</p>
+    </article>
+    <article class="card">
+      <div class="emoji">🎯</div><h3>Mini plan creativo</h3><p>Marca los pasos de una sesión creativa.</p>
+      <div class="todo-list" id="creativeList">
+        <label class="todo-item"><input type="checkbox" class="creativeCheck"> Elegir una idea clara</label>
+        <label class="todo-item"><input type="checkbox" class="creativeCheck"> Elegir 3–5 colores</label>
+        <label class="todo-item"><input type="checkbox" class="creativeCheck"> Crear el diseño</label>
+        <label class="todo-item"><input type="checkbox" class="creativeCheck"> Revisar texto y legibilidad</label>
+        <label class="todo-item"><input type="checkbox" class="creativeCheck"> Publicar y revisar resultados</label>
+      </div>
+      <div class="progress"><div id="creativeBar"></div></div><p id="creativeText" style="margin-top:7px;font-size:.82rem">0 de 5 pasos</p>
+    </article>
+  </div>
+</section>
+
+<section class="wrap" id="inspiracion">
+  <div class="section-head"><div><h2>Un poco de inspiración</h2><p class="sub">Ideas de contenido para tu próximo día creativo.</p></div></div>
+  <div class="pin-grid">
+    <div class="pin"><small>Idea de pin · 01</small><strong>Little things that make life sweeter ♡</strong><span>🎀</span></div>
+    <div class="pin"><small>Idea de pin · 02</small><strong>Mi semana en tonos pastel</strong><span>🩰</span></div>
+    <div class="pin"><small>Idea de pin · 03</small><strong>Un recordatorio para respirar</strong><span>🌷</span></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>Mini reto creativo de hoy ✨</h3><p>Haz un tablero con cinco cosas que te inspiren: un color, una canción, una textura, una frase y un lugar. No tiene que quedar perfecto; tiene que sentirse tuyo.</p></div>
+</section>
+
+<section class="wrap" id="pinterest">
+  <div class="card" style="background:linear-gradient(130deg,#fff,#fff0f5)">
+    <div class="section-head"><div><h2>Encuéntrame en Pinterest 🎀</h2><p class="sub">Mi pequeño rincón de ideas bonitas.</p></div><div class="emoji">📌</div></div>
+    <p class="lead" style="font-size:1rem">Nombre de perfil: <strong>EliBlushDiary 🎀</strong><br>Usuario visible en tu captura: <strong>@elib lushdiary</strong> (confirma el usuario exacto en tu perfil antes de usar un enlace directo).</p>
+    <a class="btn" href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer">Abrir Pinterest ↗</a>
+    <p style="font-size:.82rem;margin-top:14px">Cuando confirmes el nombre de usuario exacto, cambia el enlace de este botón por tu enlace personal. No publiques tu correo ni información privada en la web.</p>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="footer-inner"><div><div class="brand">Eli Blush Diary ♡</div><p>Dream · Create · Inspire ✨</p></div><div><span class="pill">Made with bows 🎀</span><span class="pill">Pink internet club 💗</span><p style="font-size:.8rem">Un proyecto creativo de Eli Blush. Hecho para inspirar, no para ser perfecto.</p></div></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const quotes=[
+"“No necesitas tenerlo todo resuelto para empezar.”",
+"“Tu ritmo también es un ritmo válido.”",
+"“Las ideas pequeñas pueden crecer muchísimo.”",
+"“Descansar también forma parte del plan.”",
+"“Hazlo con cariño, no con presión.”",
+"“No tiene que ser perfecto; puede ser tuyo.”",
+"“Un pasito hoy también cuenta.”",
+"“Mereces hablarte con la misma ternura que das a los demás.”"
+];
+function newQuote(){const q=document.getElementById('quote');let next=quotes[Math.floor(Math.random()*quotes.length)];if(q.textContent===next)next=quotes[(quotes.indexOf(next)+1)%quotes.length];q.textContent=next}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2200)}
+async function copyText(text){try{await navigator.clipboard.writeText(text);showToast('¡Copiado! ♡')}catch(e){showToast('Selecciona y copia el texto manualmente ♡')}}
+function copyQuote(){copyText(document.getElementById('quote').textContent)}
+function copyNote(){copyText(document.getElementById('nota').value)}
+function saveNote(){try{localStorage.setItem('eliBlushNote',document.getElementById('nota').value);showToast('Nota guardada en este navegador ♡')}catch(e){showToast('No se pudo guardar aquí; copia tu nota ♡')}}
+try{document.getElementById('nota').value=localStorage.getItem('eliBlushNote')||''}catch(e){}
+let tasks=[];
+function renderTasks(){const list=document.getElementById('todoList');list.innerHTML='';tasks.forEach((task,i)=>{const label=document.createElement('label');label.className='todo-item';const cb=document.createElement('input');cb.type='checkbox';cb.checked=task.done;cb.addEventListener('change',()=>{tasks[i].done=cb.checked;renderTasks()});const span=document.createElement('span');span.textContent=task.text;span.style.textDecoration=task.done?'line-through':'none';span.style.opacity=task.done?'.6':'1';label.append(cb,span);list.append(label)});const done=tasks.filter(t=>t.done).length;document.getElementById('progressBar').style.width=(tasks.length?done/tasks.length*100:0)+'%';document.getElementById('progressText').textContent=`${done} de ${tasks.length} tareas completadas`}
+document.getElementById('todoForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('todoInput');const text=input.value.trim();if(!text)return;tasks.push({text,done:false});input.value='';renderTasks()});
+function clearDone(){tasks=tasks.filter(t=>!t.done);renderTasks();showToast('Tareas terminadas eliminadas ♡')}
+function updateCreative(){const checks=[...document.querySelectorAll('.creativeCheck')];const n=checks.filter(c=>c.checked).length;document.getElementById('creativeBar').style.width=n/checks.length*100+'%';document.getElementById('creativeText').textContent=`${n} de ${checks.length} pasos completados`}
+document.querySelectorAll('.creativeCheck').forEach(c=>c.addEventListener('change',updateCreative));updateCreative();
+</script>
+</body>
+</html>
