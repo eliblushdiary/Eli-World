@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eli World ♡</title>
+<style>
+:root{--pink:#f5b8d0;--cream:#fffaf5;--ink:#594454}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,sans-serif}
+header{text-align:center;padding:36px 16px;background:#f9dce8}
+header h1{font-size:42px;margin:8px}
+nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:15px}
+a{color:#a34f7a}
+main{max-width:850px;margin:auto;padding:16px}
+section{background:white;border:1px solid #f1d4e1;border-radius:20px;padding:20px;margin:16px 0}
+h2{color:#b45c87}
+button{background:#f4c2d7;border:0;border-radius:12px;padding:11px 15px;color:#59384a;cursor:pointer;margin:5px}
+input,textarea{width:100%;padding:12px;border:1px solid #e7c6d6;border-radius:12px;margin:6px 0;font:inherit}
+li{margin:9px 0}
+footer{text-align:center;padding:25px;background:#f9dce8}
+</style>
+</head>
+<body>
+<header>
+<div>୨୧ ·˚ ༘ ⋆｡♡˚</div>
+<h1>Eli World</h1>
+<p>Un rinconcito de ideas, creatividad y magia ✨</p>
+<div>🌷 🎀 🦋 💗 🌷</div>
+</header>
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#tareas">Organizador</a>
+<a href="#notas">Mis notas</a>
+<a href="#inspo">Inspiración</a>
+</nav>
+<main>
+<section id="inicio">
+<h2>Bienvenida a mi mundo ♡</h2>
+<p>Un espacio para crear, aprender, organizarse y soñar en grande.</p>
+<button onclick="alert('¡Tú puedes con todo, un pasito a la vez! 💗')">Mi mensajito ✨</button>
+</section>
+<section id="tareas">
+<h2>♡ Mi lista de tareas</h2>
+<p>Escribe algo que quieras completar.</p>
+<input id="tarea" placeholder="Ej. Terminar mi proyecto">
+<button onclick="agregar()">Añadir tarea +</button>
+<ul id="lista"></ul>
+</section>
+<section id="notas">
+<h2>♡ Mi espacio de notas</h2>
+<textarea id="nota" rows="5" placeholder="Ideas, sueños, recordatorios..."></textarea>
+<button onclick="guardar()">Guardar nota</button>
+<button onclick="leer()">Ver nota guardada</button>
+<p id="resultado"></p>
+</section>
+<section id="inspo">
+<h2>♡ Mi rincón creativo</h2>
+<p>Ideas bonitas para tus próximos proyectos.</p>
+<ul>
+<li>🎀 Crear un tablero de inspiración.</li>
+<li>📚 Aprender algo nuevo cada semana.</li>
+<li>🦋 Inventar un proyecto original.</li>
+<li>🌷 Dedicar tiempo a algo que te haga feliz.</li>
+</ul>
+<a href="https://www.pinterest.com/" target="_blank" rel="noopener">Explorar Pinterest ↗</a>
+<p><small>Después podemos poner el enlace de nuestro perfil.</small></p>
+</section>
+</main>
+<footer>
+Hecho con ♡ para Eli World
+<p>Pequeñas ideas, grandes sueños ✨</p>
+</footer>
+<script>
+function agregar(){
+ const campo=document.getElementById('tarea');
+ if(!campo.value.trim())return;
+ const li=document.createElement('li');
+ const check=document.createElement('input');
+ check.type='checkbox';check.style.width='auto';
+ li.append(check,document.createTextNode(' '+campo.value));
+ document.getElementById('lista').append(li);
+ campo.value='';
+}
+function guardar(){
+ try{localStorage.setItem('eliNota',document.getElementById('nota').value);
+ document.getElementById('resultado').textContent='Nota guardada en este navegador 💗';}
+ catch(e){document.getElementById('resultado').textContent='No se pudo guardar la nota.';}
+}
+function leer(){
+ try{document.getElementById('nota').value=localStorage.getItem('eliNota')||'';
+ document.getElementById('resultado').textContent='Aquí tienes tu nota ♡';}
+ catch(e){document.getElementById('resultado').textContent='No se pudo leer la nota.';}
+}
+</script>
+</body>
+</html>
